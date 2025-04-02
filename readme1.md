@@ -1,0 +1,1 @@
+This lab will have you work through a list of TypeScript problems to create a TypeScript program that includes classes, unions, literal types, generics, and more. Working through this process is intended to familiarize you with basic TypeScript syntax and techniques, while also providing insights into the similarities between TypeScript and standard JavaScript code.
