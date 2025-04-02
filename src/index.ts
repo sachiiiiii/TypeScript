@@ -88,18 +88,45 @@ class NCycle<T> {
     this.status = "stopped";
   }
   // Create a new method print, which returns nothing and has a single number parameter (either optional or defaulted to 0).
-  print(num?: number = 0): void {
+  print(num: number = 0): void {
     //Use type guards and other appropriate techniques to log:
     //"This is a <make> <model> NCycle." if make and model are not arrays.
-    if (typeof this.make !== "object" && typeof this.model !== "object") {
+    if (!Array.isArray(this.make) && !Array.isArray(this.model)) {
       console.log(`This is a <${this.make}> <${this.model}> NCycle.`);
     }
-    //     "This NCycle has a <make> <model> at <parameter>." if make and model are arrays and the index of parameter exists in each.
-    //     "This NCycle was not created properly." if neither of the above are true.
+    //"This NCycle has a <make> <model> at <parameter>."
+    // if make and model are arrays and the index of parameter exists in each.
+    else if (this.make[num] && this.model[num]) {
+      // ERROR:
+      // Element implicitly has an 'any' type because expression of type 'number' can't be used to index type 'T | T[]'.
+      // No index signature with a parameter of type 'number' was found on type 'T | T[]'.
+      console.log(
+        `This NCycle has a <${this.make}> <${this.model}> at <${num}>.`
+      );
+    }
+    // "This NCycle was not created properly." if neither of the above are true.
+    else {
+      console.log("This NCycle was not created properly.");
+    }
   }
 
   // Create a new method printAll, which returns nothing and has no parameters.
-  printAll() {
+  printAll(): void {
     // Use type guards and appropriate techniques to implement printAll such that it logs the same statements as print, but for all matching pairs in the make and model arrays, if applicable.
+    //"This is a <make> <model> NCycle." if make and model are not arrays.
+    if (!Array.isArray(this.make) && !Array.isArray(this.make)) {
+      console.log(`This is a <${this.make}> <${this.model}> NCycle.`);
+    }
+    //"This NCycle has a <make> <model> at <parameter>."
+    // if make and model are arrays and the index of parameter exists in each and the value of that index in each match.
+    else if (this.make[num] !== -1 && this.make[num] !== -1) {
+      console.log(
+        `This NCycle has a <${this.make}> <${this.model}> at <${num}>.`
+      );
+    }
+    // "This NCycle was not created properly." if neither of the above are true.
+    else {
+      console.log("This NCycle was not created properly.");
+    }
   }
 }
