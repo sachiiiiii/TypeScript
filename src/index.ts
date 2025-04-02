@@ -97,9 +97,6 @@ class NCycle<T> {
     //"This NCycle has a <make> <model> at <parameter>."
     // if make and model are arrays and the index of parameter exists in each.
     else if (this.make[num] && this.model[num]) {
-      // ERROR:
-      // Element implicitly has an 'any' type because expression of type 'number' can't be used to index type 'T | T[]'.
-      // No index signature with a parameter of type 'number' was found on type 'T | T[]'.
       console.log(
         `This NCycle has a <${this.make}> <${this.model}> at <${num}>.`
       );
@@ -112,17 +109,20 @@ class NCycle<T> {
 
   // Create a new method printAll, which returns nothing and has no parameters.
   printAll(): void {
-    // Use type guards and appropriate techniques to implement printAll such that it logs the same statements as print, but for all matching pairs in the make and model arrays, if applicable.
+    // Use type guards and appropriate techniques to implement printAll such that it logs the same statements as print,
+    // but for all matching pairs in the make and model arrays, if applicable.
     //"This is a <make> <model> NCycle." if make and model are not arrays.
-    if (!Array.isArray(this.make) && !Array.isArray(this.make)) {
+    if (!Array.isArray(this.make) && !Array.isArray(this.model)) {
       console.log(`This is a <${this.make}> <${this.model}> NCycle.`);
     }
     //"This NCycle has a <make> <model> at <parameter>."
-    // if make and model are arrays and the index of parameter exists in each and the value of that index in each match.
-    else if (this.make[num] !== -1 && this.make[num] !== -1) {
-      console.log(
-        `This NCycle has a <${this.make}> <${this.model}> at <${num}>.`
-      );
+    // if make and model are arrays and the index of parameter exists in each.
+    else if (Array.isArray(this.make) && Array.isArray(this.model)) {
+      for (let idx = 0; idx < this.make.length; idx++) {
+        if (this.make[idx] === this.make[idx]) {
+          console.log(`This NCycle has a <${this.make}> <${this.model}> at <${idx}>.`);
+        }
+      }
     }
     // "This NCycle was not created properly." if neither of the above are true.
     else {
